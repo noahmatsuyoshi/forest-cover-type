@@ -106,5 +106,6 @@ def predict():
 def index():
     return send_from_directory(app.static_folder, 'index.html')
     
-# app.run('0.0.0.0', port=80)
+app.run('0.0.0.0', port=80)
+# gunicorn --threads 4 -b 0.0.0.0:80 --access-logfile server.log --timeout 60 server:app
 # gunicorn -D --threads 4 -b 0.0.0.0:80 --access-logfile server.log --timeout 60 server:app
