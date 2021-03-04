@@ -1,0 +1,19 @@
+.forest {
+    height: 15vmin;
+    width: 25vmin;
+}
+
+.pond {
+    height: 15vmin;
+    width: 15vmin;
+}
+
+.road {
+    height: 10vmin;
+    width: 10vmin;
+}
+
+.fire {
+    height: 12vmin;
+    width: 8vmin;
+}
