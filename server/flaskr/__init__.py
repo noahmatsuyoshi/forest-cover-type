@@ -4,6 +4,7 @@ from flask.helpers import send_from_directory
 import pandas as pd
 from joblib import load
 from flask.globals import request
+import model_depend
 
 def create_app():
     app = Flask(__name__, static_folder='build', static_url_path='/', instance_relative_config=True)

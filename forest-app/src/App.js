@@ -1,6 +1,6 @@
 import Canvas from './components/Canvas';
 import OptionsPanel from './components/OptionsPanel';
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import mapScaleImg from './images/map_scale.png';
 

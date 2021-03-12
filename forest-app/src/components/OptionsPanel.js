@@ -34,14 +34,32 @@ class OptionsPanel extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    checkNumericInput(value) {
+        let foundDecimal = false;
+        for (let i = 0; i < value.length; i++) {
+            const c = value.charAt(i);
+            if(c !== '.' && isNaN(parseInt(c))) return false;
+            if(c === '.' && foundDecimal) return false;
+            if(c === '.') foundDecimal = true;
+        }
+        return true;
+    }
+
     handleInputChange(event) {
         const name = event.target.name;
-        const value = event.target.value;
-        this.setState({[name]: parseInt(value)});
+        let value = event.target.value;
+        if(!(this.checkNumericInput(value)) && value !== "") return;
+        this.setState({[name]: value});
     }
 
     handleSubmit(event) {
-        this.props.stateManager.setState(this.state);
+        const state = Object.assign({}, this.state);
+        state.elevation = parseFloat(state.elevation);
+        state.aspect = parseFloat(state.aspect);
+        state.slope = parseFloat(state.slope);
+        state.wildernessArea = parseInt(state.wildernessArea);
+        state.soilType = parseInt(state.soilType);
+        this.props.stateManager.setState(state);
         this.props.getPrediction().then(value => {
             console.log(value);
             this.setState({prediction: value['prediction']});

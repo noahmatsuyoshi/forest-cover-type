@@ -1,0 +1,5 @@
+server/forest_app_env/
+server/model_dump.joblib
+server/dist
+server/build
+forest-app/build
